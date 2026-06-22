@@ -1,0 +1,204 @@
+  h1
+ {
+    color: rgb(255, 252, 62);
+    font-family:Tiny5; 
+   
+ }
+
+ #h21{ 
+    font-family:Honk;
+    color: rgb(6, 39, 77);
+    
+    
+ }
+ td{
+    font-family:Tiny5 ; 
+
+ }
+ 
+ #p2{
+    font-family:Smooch Sans ; 
+ }
+
+ #p1{
+    font-family:Tiny5  ; 
+ }
+  #p3{
+    font-family: Tiny5 ; 
+ }
+ footer{
+    color: rgb(6, 50, 10);
+ }
+body{
+
+    background: linear-gradient(to top,rgb(215,215,215),rgb(121,5,5));
+    background-attachment: fixed;
+    background-repeat:no-repeat;
+
+    text-align:center;
+
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+}
+ table{
+    margin: auto;
+ }
+form{
+    border: 10px ridge rgb(196, 62, 62);
+    border-radius: 10px;
+    display: inline-block;
+    padding: 20px;
+    background-color: rgba(142, 56, 56, 0.315);
+}
+button:hover { background-color: rgb(220, 0, 0);
+    animation:3s linear 0s infinite running myOpacity ;
+
+}
+button:active{ 
+    background-color: rgb(196, 61, 61);
+}     
+ 
+button{
+    background-color: rgb(182, 66, 82);
+    padding: 10px 20px;
+  border: 2px dashed rgb(198, 75, 75);
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: Tiny5;
+} 
+
+
+
+#pokemonCard{
+    margin-top:20px;
+    padding:20px;
+    width:300px;
+    margin-left:auto;
+    margin-right:auto;
+    background:white;
+    border:4px solid black;
+    border-radius:10px;
+    font-family:Smooch Sans;
+    
+
+}
+
+
+
+#pokemonName{
+    padding:10px;
+    width:200px;
+    text-align:center;
+}
+
+
+#pokemonCard img{
+    width:150px;
+} 
+
+.pokemon-trainer-card{
+
+    width:500px;
+    height:300px;
+
+    margin:auto;
+
+    background-image:url("images/trainer.png");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    position:relative;
+
+    border:8px solid black;
+    border-radius:20px;
+
+    overflow:hidden;
+    text-align:center;
+    box-shadow:8px 8px 0px rgba(141, 21, 21, 0.511);
+}
+
+
+.card-info{
+
+    bottom:20px;
+
+    width:100%;
+
+    padding:15px;
+
+    background:rgba(255,255,255,0.75);
+
+    border:3px solid black;
+
+    border-radius:15px;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    font-family:Averia Gruesa Libre;
+
+    color:rgb(47,20,20);
+
+    font-size:18px;
+}
+.card-info h2{
+     margin:0;
+    color:rgb(0, 0, 0);
+    font-size:28px;
+font-family: Averia Gruesa Libre;
+}
+
+@keyframes myOpacity{ 
+    50%{opacity: 0;}
+
+}
+@media(max-width:360px){
+
+    .pokemon-trainer-card{
+        height:auto;
+    }
+
+}
+
+.pokemon-trainer-card{
+    cursor: pointer;
+}
+
+.pokemon-trainer-card:hover{
+    transform: scale(1.05);
+    transition: 0.3s;
+} 
+
+#pokemonImg{
+
+    width:200px;
+
+    image-rendering:pixelated;
+
+    margin:20px;
+
+}
+
+#options{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    align-items:center;
+
+}
