@@ -28,8 +28,17 @@ form.addEventListener("submit", function(event){
     if(email === ""){
         error.textContent =
         "Email is required!";
-        return;
+        return; 
+        
     }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailPattern.test(email)) {
+    error.textContent =
+    "Please enter a valid email address!";
+    return;
+}
 
     if(age < 18){
         error.textContent =
@@ -51,22 +60,32 @@ form.addEventListener("submit", function(event){
 
     error.textContent = "";
 
-    localStorage.setItem(
-        "username",
-        username
-    );
+    fetch("http://localhost:3000/register", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        username,
+        email,
+        age,
+        password
+    })
+})
+.then(response => response.json())
+.then(data => {
 
-    localStorage.setItem(
-        "email",
-        email
-    );
+    alert(data.message);
 
-    localStorage.setItem(
-        "age",
-        age
-    );
+   
+    localStorage.setItem("username", username);
+    localStorage.setItem("email", email);
+    localStorage.setItem("age", age);
 
-    window.location.href =
-    "trainer.html";
+    window.location.href = "trainer.html";
 
-});
+})
+.catch(error => {
+    console.error(error);
+}); 
+}) 
