@@ -10,7 +10,7 @@ app.use(express.json());
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "SIBILROCKERS15601!", 
+    password: "SIBILROCKERS15601!",  
     database: "pokemon_game"
 });
 
@@ -22,7 +22,7 @@ db.connect(err => {
     }
 });
 
-// CREATE
+
 app.post("/register", (req, res) => {
 
     const { username, email, age, password } = req.body;
@@ -37,7 +37,7 @@ app.post("/register", (req, res) => {
     );
 });
 
-// READ
+
 app.get("/trainers", (req, res) => {
 
     db.query("SELECT * FROM trainers", (err, result) => {
