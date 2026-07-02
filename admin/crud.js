@@ -1,6 +1,31 @@
- async function loadTrainers() {
+const token = localStorage.getItem("token");
+const email = localStorage.getItem("email");
 
-    const response = await fetch("http://localhost:3000/trainers");
+if (!token) {
+
+    window.location.href = "login.html";
+
+}
+
+if (email !== "admin@gmail.com") {
+
+    alert("Access Denied! Admins only.");
+
+    window.location.href = "../frontend/trainer.html";
+
+}
+
+async function loadTrainers() {
+
+    const token = localStorage.getItem("token");
+
+    const response = await fetch("http://localhost:3000/trainers", {
+
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+
+    });
 
     const trainers = await response.json();
 
@@ -42,11 +67,17 @@
 
 }
 
-async function deleteTrainer(id){
+async function deleteTrainer(id) {
 
-    await fetch(`http://localhost:3000/trainers/${id}`,{
+    const token = localStorage.getItem("token");
 
-        method:"DELETE"
+    await fetch(`http://localhost:3000/trainers/${id}`, {
+
+        method: "DELETE",
+
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
 
     });
 
@@ -54,7 +85,9 @@ async function deleteTrainer(id){
 
 }
 
-async function editTrainer(id, username, email, age){
+async function editTrainer(id, username, email, age) {
+
+    const token = localStorage.getItem("token");
 
     const newName = prompt("Username:", username);
 
@@ -62,27 +95,29 @@ async function editTrainer(id, username, email, age){
 
     const newAge = prompt("Age:", age);
 
-    await fetch(`http://localhost:3000/trainers/${id}`,{
+    await fetch(`http://localhost:3000/trainers/${id}`, {
 
-        method:"PUT",
+        method: "PUT",
 
-        headers:{
-            "Content-Type":"application/json"
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
         },
 
-        body:JSON.stringify({
+        body: JSON.stringify({
 
-            username:newName,
-            email:newEmail,
-            age:newAge
+            username: newName,
+            email: newEmail,
+            age: newAge
 
         })
 
     });
-    
+
     localStorage.setItem("username", newName);
- localStorage.setItem("email", newEmail);
- localStorage.setItem("age", newAge);
+    localStorage.setItem("email", newEmail);
+    localStorage.setItem("age", newAge);
+
     loadTrainers();
 
 }
