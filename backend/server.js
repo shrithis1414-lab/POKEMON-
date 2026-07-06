@@ -41,6 +41,7 @@ function verifyToken(req, res, next) {
 
     }
 
+    
     const token = authHeader.split(" ")[1];
 
     jwt.verify(token, JWT_SECRET, (err, decoded) => {
@@ -82,7 +83,7 @@ app.post("/register", async (req, res) => {
 
     const { username, email, age, password } = req.body;
 
-    // Check if email already exists
+  
     db.query(
         "SELECT * FROM trainers WHERE email = ?",
         [email],
@@ -100,10 +101,10 @@ app.post("/register", async (req, res) => {
 
             try {
 
-                // Hash the password
+        
                 const hashedPassword = await bcrypt.hash(password, 10);
 
-                // Store hashed password
+            
                 db.query(
                     "INSERT INTO trainers(username, email, age, password) VALUES(?,?,?,?)",
                     [username, email, age, hashedPassword],
@@ -253,7 +254,7 @@ app.get("/pokemon", (req, res) => {
 });
 
 
-// UPDATE
+
 app.put("/trainers/:id", verifyToken, verifyAdmin, (req, res) => {
 
     const { username, email, age } = req.body;
@@ -269,7 +270,7 @@ app.put("/trainers/:id", verifyToken, verifyAdmin, (req, res) => {
 
 });
 
-// DELETE
+
 app.delete("/trainers/:id", verifyToken, verifyAdmin, (req, res) => {
 
     db.query(
